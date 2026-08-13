@@ -1,0 +1,5 @@
+#!/bin/bash
+pkill Xvnc
+pkill dbus-daemon
+rm -f /tmp/.X11-unix/X1
+rm -f /tmp/.X1-lock
