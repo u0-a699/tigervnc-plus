@@ -1,6 +1,13 @@
 #!/bin/bash
+a=$PWD
 sudo apt update && sudo apt upgrade
-sudo apt install tigervnc-standalone-server python3 dbux-x11 ca-certificates
+rm -rf ~/tigervnc-plus
+sudo apt install tigervnc-standalone-server python3 dbus-x11 ca-certificates git
 cd $HOME
-git clone github.com/u0-a699/tigervnc-plus.git
+git clone https://github.com/u0-a699/tigervnc-plus.git
 cd tigervnc-plus
+chmod +x set-vnc*
+chmod +x *vnc
+./set-vnclang en_US
+./set-vncgeometry 1920x1080
+cd a
