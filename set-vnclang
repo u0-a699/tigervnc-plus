@@ -1,1 +1,4 @@
-cat ~/tigervnc-plus/
+#!/bin/bash
+cat ~/tigervnc-plus/vncconf/Language <<"EOF"
+$1
+EOF
