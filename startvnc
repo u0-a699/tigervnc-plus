@@ -1,0 +1,38 @@
+#!/bin/bash
+if ! command -v Xtigervnc >/dev/null 2>&1 || ! command -v dbus-launch >/dev/null 2>&1
+then
+    echo "Error: Missing required programs!"
+    echo "Please install tigervnc-standalone-server & dbus-x11"
+    exit 1
+fi
+export LANGUAGE=zh_CN:zh_TW:zh_HK:en_GB:en_US
+if [[ $1 == --help ]]; then
+	echo -e "用途:startvnc :DISPLAY program\n可以使用配套'stopvnc'结束VNC协议,'set-vncgeometry 长x宽'修改分辨率\n--help查看帮助"
+	echo -e "事例\nstartvnc :1 startxfce4"
+	echo -e "在使用之前，请把已经用'vncpasswd'打包好的密码文件复制到~/tigervnc/vncconf中"
+	exit 0
+fi
+pkill Xvnc
+pkill dbus-daemon
+rm -f /tmp/.X11-unix/${1#:}
+rm -f /tmp/.X${1#:}-lock
+sleep 1
+if [ ! -f ~/tigervnc-plus/vncconf/geometry ]; then
+    echo "Err:no passwd"
+    echo "please copy your passwd file to ~/tigervnc-plus/vncconf"
+    exit 1
+Xvnc $1 \
+	-depth 24 \
+	-geometry $(cat ~/tigervnc-plus/vncconf/geometry) \
+	-listen 0.0.0.0 \
+	-PasswordFile ~/tigervnc-plus/vncconf/passwd \
+	&>/dev/null &
+sleep 2
+export DISPLAY=$1
+a=${@:2}
+if [[ -z $a ]]; then
+	a="python3 /root/.vnc/xstartup.py"
+fi
+echo "使用'vncpasswd'生成密码文件"
+dbus-launch \
+	--exit-with-session $a
