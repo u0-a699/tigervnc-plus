@@ -5,7 +5,7 @@ then
     echo "Please install tigervnc-standalone-server & dbus-x11"
     exit 1
 fi
-export LANGUAGE=zh_CN:zh_TW:zh_HK:en_GB:en_US
+export LANGUAGE=$(cat ~/tigervnc-plus/vncconf/Language)
 if [[ $1 == --help ]]; then
 	echo -e "用途:startvnc :DISPLAY program\n可以使用配套'stopvnc'结束VNC协议,'set-vncgeometry 长x宽'修改分辨率\n--help查看帮助"
 	echo -e "事例\nstartvnc :1 startxfce4"
