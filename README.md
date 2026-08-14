@@ -1,4 +1,5 @@
 # tigervnc-plus
+warning:该产品仅用于proot debian trixie真机运行后果自负
 自己制作的tigervnc一键工具
 How to install
         bash -c "curl -sSLf $(https://raw.githubusercontent.com/u0-a699/tigervnc-plus/refs/heads/main/install.sh)"
