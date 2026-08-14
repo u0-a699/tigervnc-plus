@@ -1,7 +1,7 @@
 # tigervnc-plus
 自己制作的tigervnc一键工具
 How to install
-        bash -c "https://raw.githubusercontent.com/u0-a699/tigervnc-plus/refs/heads/main/install.sh"
+        bash -c "curl -sSLf $(https://raw.githubusercontent.com/u0-a699/tigervnc-plus/refs/heads/main/install.sh)"
 Usage:
         ./startvnc :DISPLAY program
 使用stopvnc停止VNC协议
