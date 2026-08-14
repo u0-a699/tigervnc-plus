@@ -1,7 +1,7 @@
 #!/bin/bash
 a=$PWD
 if [ "$USER" == "root" ]; then
-        echo -e "\033[31mErr:the install.sh cannot run on root\nplease run the program on sudo user"
+        echo -e "\033[31mErr:the install.sh cannot run on root\nplease run the program on sudo user\033[0m"
         exit 1
 fi
 sudo apt update && sudo apt upgrade
@@ -14,8 +14,10 @@ chmod +x set-vnc*
 chmod +x *vnc
 if [[ ! -f ~/.config/tigervnc/passwd ]]; then
         echo "123456" | vncpasswd -f > ./vncconf/passwd
+        echo "VNC密码为123456"
 else
         cp ~/.config/tigervnc/passwd ./vncconf/
+        echo "VNC密码为tigervnc的VNC密码"
 fi
 ./set-vnclang en_US
 ./set-vncgeometry 1920x1080
