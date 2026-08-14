@@ -21,6 +21,7 @@ if [ ! -f ~/tigervnc-plus/vncconf/geometry ]; then
     echo "Err:no passwd"
     echo "please copy your passwd file to ~/tigervnc-plus/vncconf"
     exit 1
+fi
 Xvnc $1 \
 	-depth 24 \
 	-geometry $(cat ~/tigervnc-plus/vncconf/geometry) \
@@ -31,7 +32,7 @@ sleep 2
 export DISPLAY=$1
 a=${@:2}
 if [[ -z $a ]]; then
-	a="python3 /root/.vnc/xstartup.py"
+	a="python3 ~/tigervnc-plus/vncconf/xstartup.py"
 fi
 echo "使用'vncpasswd'生成密码文件"
 dbus-launch \
