@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ $# -eq 0 ]; then
+        startvnc --help
+        exit 1
+fi
 if ! command -v Xtigervnc >/dev/null 2>&1 || ! command -v dbus-launch >/dev/null 2>&1
 then
     echo "Error: Missing required programs!"
