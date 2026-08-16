@@ -20,6 +20,6 @@ else
         echo "VNC密码为tigervnc的VNC密码"
 fi
 ./set-vnclang en_US
-./set-vncgeometry 1920x1080
+./set-vncgeometry 1280x720
 rm install.sh
 cd "$a"
