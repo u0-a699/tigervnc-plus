@@ -1,5 +1,5 @@
 #!/bin/bash
-pkill Xvnc
+pkill -f "Xvnc $1"
 pkill dbus-daemon
-rm -f /tmp/.X11-unix/X1
-rm -f /tmp/.X1-lock
+rm -f /tmp/.X11-unix/X$1
+rm -f /tmp/.X$1-lock
