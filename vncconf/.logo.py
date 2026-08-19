@@ -10,9 +10,9 @@ while run:
         if event.type==pygame.QUIT:
             run=False
     screen.fill((34,34,34))
-    pygame.draw.rect(screen,(255,0,0),[0,0,350,250])
+    pygame.draw.rect(screen,(255,0,255),[0,0,350,250])
     pygame.draw.rect(screen,(255,255,0),[350,0,350,250])
-    pygame.draw.rect(screen,(0,255,0),[0,250,350,250])
-    pygame.draw.rect(screen,(0,0,255),[350,250,350,250])
+    pygame.draw.rect(screen,(0,255,255),[0,250,350,250])
+    pygame.draw.rect(screen,(0,0,0),[350,250,350,250])
     pygame.display.update()
 pygame.quit()
